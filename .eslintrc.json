@@ -1,0 +1,35 @@
+{
+  "extends": [
+    "airbnb",
+    "prettier",
+    "prettier/react",
+    "plugin:prettier/recommended",
+    "eslint-config-prettier"
+  ],
+  "parser": "babel-eslint",
+  "rules": {
+    "import/no-named-as-default": 0,
+    "linebreak-style": 0,
+    "import/no-unresolved": "off",
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [".js", ".jsx"]
+      }
+    ],
+    "prettier/prettier": [
+      "error",
+      {
+        "trailingComma": "es5",
+        "singleQuote": true,
+        "printWidth": 100,
+        "semi": false
+      }
+    ]
+  },
+  "plugins": ["prettier"],
+  "env": {
+    "jest": true,
+    "browser": true
+  }
+}
