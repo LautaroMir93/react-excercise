@@ -1,49 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import PropTypes from 'prop-types'
+import { Row, Col } from 'antd'
 import * as selectors from '../../selectors'
 import * as actions from '../../actions'
 import SearchFilter from './SearchFilter/SearchFilter'
 import PlayerList from './PlayerList/PlayerList'
 
 export class PlayerSearch extends Component {
-  static propTypes = {
-    isFetching: PropTypes.bool,
-    filteredPlayers: PropTypes.arrayOf(
-      PropTypes.shape({
-        contractUntil: PropTypes.string.isRequired,
-        dateOfBirth: PropTypes.string.isRequired,
-        jerseyNumber: PropTypes.number.isRequired,
-        name: PropTypes.string.isRequired,
-        nationality: PropTypes.string.isRequired,
-        position: PropTypes.string.isRequired,
-      })
-    ),
-    positions: PropTypes.arrayOf(PropTypes.string),
-    filters: PropTypes.shape({
-      name: PropTypes.string,
-      position: PropTypes.string,
-      age: PropTypes.number,
-    }),
-    error: PropTypes.string,
-    fetchPlayers: PropTypes.func,
-    applyFilters: PropTypes.func,
-  }
-
-  static defaultProps = {
-    isFetching: false,
-    filteredPlayers: null,
-    positions: [],
-    filters: {
-      name: null,
-      position: null,
-      age: null,
-    },
-    error: null,
-    fetchPlayers: () => null,
-    applyFilters: () => null,
-  }
-
   componentDidMount = () => {
     const { fetchPlayers } = this.props
     fetchPlayers()
@@ -52,16 +15,18 @@ export class PlayerSearch extends Component {
   render() {
     const { isFetching, filteredPlayers, filters, applyFilters, error, positions } = this.props
     return (
-      <div>
-        <h1>Football Player Finder</h1>
-        <SearchFilter
-          isFetching={isFetching}
-          filters={filters}
-          onSearch={applyFilters}
-          positions={positions}
-        />
-        <PlayerList players={filteredPlayers} error={error} />
-      </div>
+      <Row type="flex" justify="center">
+        <Col xs={22} md={22}>
+          <h1 style={{ marginTop: '50px' }}>Football Player Finder</h1>
+          <SearchFilter
+            isFetching={isFetching}
+            filters={filters}
+            onSearch={applyFilters}
+            positions={positions}
+          />
+          <PlayerList players={filteredPlayers} isFetching={isFetching} error={error} />
+        </Col>
+      </Row>
     )
   }
 }

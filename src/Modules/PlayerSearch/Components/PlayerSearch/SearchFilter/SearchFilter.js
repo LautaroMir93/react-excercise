@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Col, Row, Form, Select, Input, Button } from 'antd'
+import { Col, Form, Select, Input } from 'antd'
+import { FiltersWrapper, AgeInput, SearchButton, Filter } from './SearchFilterStyle'
 
 export const SearchFilter = props => {
   const { form, onSearch, isFetching, filters, positions } = props
@@ -13,16 +14,16 @@ export const SearchFilter = props => {
 
   return (
     <Form onSubmit={search}>
-      <Row>
-        <Col xs={24} sm={12} md={6}>
-          <Form.Item>
+      <FiltersWrapper type="flex" justify="space-between">
+        <Col xs={24} md={5}>
+          <Filter>
             {getFieldDecorator('name', {
               initialValue: filters.name,
             })(<Input placeholder="name" type="text" />)}
-          </Form.Item>
+          </Filter>
         </Col>
-        <Col xs={24} sm={12} md={6}>
-          <Form.Item>
+        <Col xs={24} md={5}>
+          <Filter>
             {getFieldDecorator('position', {
               initialValue: filters.position ? filters.position : undefined,
             })(
@@ -34,21 +35,21 @@ export const SearchFilter = props => {
                 ))}
               </Select>
             )}
-          </Form.Item>
+          </Filter>
         </Col>
-        <Col xs={24} sm={12} md={6}>
-          <Form.Item>
+        <Col xs={24} md={5}>
+          <Filter>
             {getFieldDecorator('age', {
               initialValue: filters.age,
-            })(<Input placeholder="age" type="number" />)}
-          </Form.Item>
+            })(<AgeInput placeholder="age" min={18} max={40} />)}
+          </Filter>
         </Col>
-        <Col xs={24} sm={12} md={6}>
-          <Button type="primary" htmlType="submit" disabled={isFetching}>
+        <Col xs={24} md={5}>
+          <SearchButton type="primary" htmlType="submit" disabled={isFetching}>
             Search
-          </Button>
+          </SearchButton>
         </Col>
-      </Row>
+      </FiltersWrapper>
     </Form>
   )
 }
