@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import { reducer as PlayerSearch } from './PlayerSearch/reducer'
+import { reducer as PlayerSearch } from './PlayerSearch'
 
 const rootReducer = combineReducers({
   PlayerSearch,

@@ -1,2 +1,2 @@
-export { ErrorMessage } from './Components/ErrorMessage/ErrorMessage'
-export { NotFound } from './Components/NotFound/NotFound'
+export { default as ErrorMessage } from './Components/ErrorMessage/ErrorMessage'
+export { default as NotFound } from './Components/NotFound/NotFound'

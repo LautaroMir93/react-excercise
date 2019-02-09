@@ -6,13 +6,13 @@ export const ErrorMessage = props => {
   const { align, message } = props
   return (
     <Error align={align}>
-      <span>{{ message }}</span>
+      <span>{message}</span>
     </Error>
   )
 }
 
 ErrorMessage.propTypes = {
-  align: PropTypes.bool,
+  align: PropTypes.string,
   message: PropTypes.string.isRequired,
 }
 

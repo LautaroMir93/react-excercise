@@ -1,3 +1,2 @@
-import PlayerSearch from './Components/PlayerSearch/PlayerSearch'
-
-export default PlayerSearch
+export { default as PlayerSearch } from './Components/PlayerSearch/PlayerSearch'
+export { reducer } from './reducer'

@@ -7,13 +7,12 @@ export const SearchFilter = props => {
   const { form, onSearch, isFetching, filters, positions } = props
   const { getFieldDecorator } = form
 
-  const search = e => {
-    e.preventDefault()
+  const search = () => {
     onSearch(form.getFieldsValue())
   }
 
   return (
-    <Form onSubmit={search}>
+    <Form>
       <FiltersWrapper type="flex" justify="space-between">
         <Col xs={24} md={5}>
           <Filter>
@@ -45,7 +44,7 @@ export const SearchFilter = props => {
           </Filter>
         </Col>
         <Col xs={24} md={5}>
-          <SearchButton type="primary" htmlType="submit" disabled={isFetching}>
+          <SearchButton onClick={search} type="primary" disabled={isFetching}>
             Search
           </SearchButton>
         </Col>
@@ -60,16 +59,12 @@ SearchFilter.propTypes = {
   filters: PropTypes.shape({
     name: PropTypes.string,
     position: PropTypes.string,
-    age: PropTypes.string,
+    age: PropTypes.number,
   }),
   positions: PropTypes.arrayOf(PropTypes.string),
-  form: PropTypes.shape({
-    getFieldDecorator: PropTypes.func.isRequired,
-  }),
 }
 
 SearchFilter.defaultProps = {
-  form: null,
   isFetching: false,
   filters: {
     name: null,

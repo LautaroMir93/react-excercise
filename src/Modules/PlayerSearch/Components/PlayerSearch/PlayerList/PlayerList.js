@@ -28,7 +28,7 @@ export const PlayerList = props => {
     },
   ]
   if (error) return <ErrorMessage align="center" message="Something went wrong fetching players" />
-  return <Table dataSource={players} loading={isFetching} columns={columns} />
+  return <Table rowKey="name" dataSource={players} loading={isFetching} columns={columns} />
 }
 
 PlayerList.propTypes = {
@@ -37,7 +37,7 @@ PlayerList.propTypes = {
       name: PropTypes.string.isRequired,
       position: PropTypes.string.isRequired,
       nationality: PropTypes.string.isRequired,
-      dateOfBirth: PropTypes.string.isRequired,
+      age: PropTypes.number.isRequired,
     })
   ),
   isFetching: PropTypes.bool.isRequired,

@@ -1,7 +1,7 @@
 import axios from 'axios'
 import * as actionTypes from './actionTypes'
 
-const footballPlayersApi = axios.create({
+export const footballPlayersApi = axios.create({
   baseURL: process.env.REACT_APP_FOOTBALL_PLAYERS_API_URL,
 })
 
@@ -17,9 +17,9 @@ export const fetchPlayersFail = error => ({
   payload: { error },
 })
 
-export const fetchPlayers = () => dispatch => {
+export const fetchPlayers = () => async dispatch => {
   dispatch(fetchPlayersStart())
-  footballPlayersApi
+  return footballPlayersApi
     .get('players.json')
     .then(response => {
       dispatch(fetchPlayersSuccess(response))
