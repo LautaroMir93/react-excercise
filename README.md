@@ -1,4 +1,4 @@
-# Frontend development excecise
+# Frontend development excercise
 
 The goal of this project is to practice in the usage of React and some libraries.
 
